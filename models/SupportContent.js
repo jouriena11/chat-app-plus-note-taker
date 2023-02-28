@@ -1,17 +1,28 @@
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection');
 
-class TicketTag extends Model {}
+class SupportContent extends Model {}
 
-TicketTag.init(
+SupportContent.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
-          },
+        },
+         message: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        support_user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'support_user',
+                key: 'id'
+            }
+        },
         ticket_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -19,23 +30,15 @@ TicketTag.init(
                 model: 'ticket',
                 key: 'id'
             }
-        },
-        tag_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'tag',
-                key: 'id'
-            }
         }
     },
     {
-            sequelize,
-            timestamps: false,
-            freezeTableName: true,
-            underscored: true,
-            modelName: 'ticket_tag',
+        sequelize,
+        timestamps: true,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'support_user_content',
     }
-);
+)
 
-module.exports = TicketTag;
+module.exports = SupportContent;
