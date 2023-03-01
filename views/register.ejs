@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/register.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="gradient"></div>
+    <div class="login-box">
+      <% if (messages.error) { %>
+      <div class="alert alert-danger">
+        <strong><%= messages.error %></strong>
+      </div>
+      <% } %>
+      <p>Register</p>
+      <form action="/register" method="post">
+        <div class="user-box">
+          <input type="name" name="name" type="text" required />
+          <label>Full Name</label>
+        </div>
+        <div class="user-box">
+          <input type="email" name="email" type="text" required />
+          <label>Email</label>
+        </div>
+        <div class="user-box">
+          <input name="password" type="password" required />
+          <label>Password</label>
+        </div>
+
+        <a href="#">
+          <button type="submit"></button>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Sign Up
+        </a>
+      </form>
+      <p>Already have an account? <a href="/login" class="a2">Log in!</a></p>
+    </div>
+  </body>
+</html>
