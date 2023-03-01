@@ -4,15 +4,6 @@ const session = require('express-session'); // session management
 // const exphbs = require( 'express-handlebars'); // views engine
 const routes = require('./controllers'); // application routes
 
-const io = require('socket.io')(3001, { //socket.io
-    cors: {
-        origin: ["http://localhost:3001"],
-    },
-});
-
-io.on('connection', (socket) => { //connection to socket
-    console.log(socket.id);
-});
 // const helpers = require('./utils/helpers'); // TODO: Handlebars helpers -- in W14 #23, the helper is just to render emoji randomly
 
 const sequelize = require('./config/connection');
