@@ -11,8 +11,8 @@ Tag.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
-            type: DataTypes.STRING(50),
+        name: {
+            type: DataTypes.STRING(20),
             allowNull: false,
         }
     },
