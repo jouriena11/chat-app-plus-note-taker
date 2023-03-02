@@ -15,24 +15,44 @@ Ticket.init(
             type: DataTypes.STRING(50),
             allowNull: false
         },
-        content: {
-            type: DataTypes.TEXT,
+        status: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+        },
+        priority: {
+            type: DataTypes.STRING(20),
             allowNull: false
         },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "user",
-                key: "id"
+                model: 'user',
+                key: 'id'
             }
         },
-        tag_id: {
+        user_content_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "tag",
-                key: "id"
+                model: 'user_content',
+                key: 'id'
+            }
+        },
+        support_user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'support_user',
+                key: 'id'
+            }
+        },
+        support_user_content_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'support_user_content',
+                key: 'id'
             }
         }
     },
