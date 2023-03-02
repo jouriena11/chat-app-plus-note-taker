@@ -49,8 +49,6 @@ sequelize.sync({ force: false }).then(() => {
 
 
 
-
-
 // if (process.env.NODE_ENV !== "production") {
 //     require("dotenv").config();
 //   }
