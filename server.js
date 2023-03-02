@@ -5,14 +5,16 @@ if (process.env.NODE_ENV !== "production") {
 // imports
 const express = require("express");
 const bcrypt = require("bcrypt"); // for hashing passwords
-const app = express();
 const passport = require("passport");
 const initializePassport = require("./config/password-config");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const routes = require('./controllers');
 
-const port = 3001;
+const port = process.env.PORT || 3001;
+
+const app = express();
 
 // initialize passport
 initializePassport(
@@ -47,79 +49,9 @@ app.use("/img", express.static(__dirname + "public/img"));
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-// configure login post routes //also redirect me to the home page called dashboard.ejs
-// if a user is not logged in, redirect to the login page
-app.post( "/login", checkNotAuthenticated, passport.authenticate("local", {
-    successRedirect: "/main", //redirect to the home page
-    failureRedirect: "/login",
-    failureFlash: true,
-  })
-);
-
-//configure register post routes
-app.post("/register", checkNotAuthenticated, async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    users.push({
-      id: Date.now().toString(),
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-    });
-    console.log(users);
-    res.redirect("/login");
-  } catch {
-    res.redirect("/register");
-  }
-});
-
-// Routes
-app.get("/", checkNotAuthenticated,(req, res) => {
-  res.render("dashboard"); //landing page
-});
-
-app.get("/main", checkAuthenticated, (req, res) => {
-  res.render("main", {name: req.user.name}); // home page with the dashboard
-})  
-
-app.get("/login", checkNotAuthenticated, (req, res) => {
-  res.render("login");
-});
-
-app.get("/register", checkNotAuthenticated,  (req, res) => {
-  res.render("register");
-});
-
-app.get("*", checkNotAuthenticated ,(req, res) => {
-  res.render("404");
-});
-
-
-app.delete("/logout", (req, res) => {
-  req.logout(req.user, err => {
-    if (err) return next(err);
-    res.redirect("/");
-  });
-});
-
-
-// check if user is authenticated
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/main");
-}
-
-
-
-// check if user is not authenticated
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/");
-  }
-  next();
-}
+// Set routes
+app.use(routes);
 
 // Listen on port 3000
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
