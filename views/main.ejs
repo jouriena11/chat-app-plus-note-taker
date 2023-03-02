@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Welcome to Chat Support</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <a class="navbar-brand" href="#">Chat Support</a>
+      <div>
+        <a href="#">Home</a>
+        <a href="#">Filter</a>
+        <a href="#">Create Ticket</a>
+        <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit" class="logout-btn" type="submit">LogOut</button>
+        </form>
+        
+      </div>
+    </div>
+
+    <div class="welcome">
+        <h1>Welcome to Chat Support <%= name %> </h1>
+    </div>
+
+    <!-- Your website content goes here -->
+  </body>
+</html>
