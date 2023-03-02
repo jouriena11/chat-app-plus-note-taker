@@ -9,12 +9,13 @@
   </head>
   <body>
     <div class="gradient"></div>
+    
     <div class="login-box">
       <% if (messages.error) { %>
-      <div class="alert alert-danger">
-        <strong><%= messages.error %></strong>
-      </div>
-      <% } %>
+        <div class="alert alert-danger">
+          <strong><%= messages.error %></strong>
+        </div>
+        <% } %>
       <p>Log in</p>
       <form action="/login" method="post">
         <div class="user-box">
