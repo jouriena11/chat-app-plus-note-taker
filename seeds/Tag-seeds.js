@@ -1,23 +1,27 @@
-const { Tag } = require('../models');
+const { Tag } = require('../models/Tag');
+const sequelize = require('../config/connection');
 
 const tagData = [
-  {
-    tag_name: 'tech',
-  },
-  {
-    tag_name: 'general',
-  },
-  {
-    tag_name: 'games',
-  },
-  {
-    tag_name: 'music',
-  },
-  {
-    tag_name: 'sport',
-  },
+  { name: 'Urgent' },
+  { name: 'High Priority' },
+  { name: 'Low Priority' },
+  { name: 'Bug' },
+  { name: 'Feature Request' },
 ];
 
-const seedTags = () => Tag.bulkCreate(tagData);
+const seedTags = async () => {
+  try {
+    await sequelize.sync({ force: true });
 
-module.exports = seedTags;
+    await Tag.bulkCreate(tagData);
+
+    console.log('\n----- TAGS SEEDED -----\n');
+  } catch (err) {
+    console.log(err);
+  }
+
+  process.exit(0);
+};
+
+seedTags();
+

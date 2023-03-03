@@ -55,7 +55,7 @@ if (process.env.NODE_ENV !== "production") {
   
   // Listen on port 3000
   app.listen(port, () => console.log(`Listening on port ${port}`));
-=======
+
   require("dotenv").config();
 }
 

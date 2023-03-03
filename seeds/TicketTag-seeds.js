@@ -1,28 +1,18 @@
-const { TicketTag } = require('../models');
+const { TicketTag, Ticket, Tag } = require('../models/TicketTag');
 
 const TicketTagData = [
   {
     ticket_id: 1,
-    tag_id: 2,
-  },
-  {
-    ticket_id: 2,
-    tag_id: 3,
-  },
-  {
-    ticket_id: 3,
     tag_id: 1,
   },
   {
-    ticket_id: 4,
-    tag_id: 5,
-  },
-  {
-    ticket_id: 5,
-    tag_id: 4,
+    ticket_id: 1,
+    tag_id: 2,
   },
 ];
 
-const seedTicketTags = () => TicketTag.bulkCreate(TicketTagData);
+const seedTicketTags = async () => {
+  await TicketTag.bulkCreate(TicketTagData);
+};
 
 module.exports = seedTicketTags;
