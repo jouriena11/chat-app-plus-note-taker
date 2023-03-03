@@ -41,7 +41,6 @@ Once logged in, a **`support_user`** would be able to perform the following task
 ---
 ## **Installation**
 The following npm libraries must be installed to run this application:
-- axios v1.3.4
 - bcrypt v5.1.0
 - connect-session-sequelize v7.1.5
 - dotenv v16.0.3
