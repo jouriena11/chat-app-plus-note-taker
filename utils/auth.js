@@ -6,8 +6,6 @@ const checkAuthenticated = (req, res, next) => {
   res.redirect("/main");
 }
 
-
-
 // check if user is not authenticated
 const checkNotAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -18,3 +16,13 @@ const checkNotAuthenticated = (req, res, next) => {
 }
 
 module.exports = {checkAuthenticated, checkNotAuthenticated};
+
+// TODO: to merge the function above into one?
+
+// const checkAuth = (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     res.redirect("/");
+//   } else {
+//     next();
+//   }
+// }

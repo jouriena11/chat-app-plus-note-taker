@@ -16,12 +16,20 @@ UserContent.init(
             allowNull: false
         },
         user_id: {
-            model: 'user',
-            key: 'id'
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         },
         ticket_id: {
-            model: 'ticket',
-            key: 'id'
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'ticket',
+                key: 'id'
+            }
         }
     },
     {

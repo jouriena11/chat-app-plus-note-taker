@@ -5,6 +5,16 @@ const sequelize = require('../config/connection');
 class SupportUser extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
+    };
+
+    static async checkUsername(username) { // `static` allows calling SupportUser.checkUsername(username) without having to create a new `SupportUser` instance
+        const supportUser = await SupportUser.findOne({ where: { username }});
+
+        if(supportUser) {
+            throw new Error('Username already exists.')
+        }
+
+        return true
     }
 }
 
@@ -43,11 +53,13 @@ SupportUser.init(
               isEmail: true
             }
         },
-        sequelize,
+    },
+    {
+        sequelize, // pass the sequelize instance here
         timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'support_user',
+        modelName: "support_user",
     }
 );
 
