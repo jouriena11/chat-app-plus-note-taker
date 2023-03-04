@@ -31,14 +31,6 @@ Ticket.init(
                 key: 'id'
             }
         },
-        user_content_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user_content',
-                key: 'id'
-            }
-        },
         support_user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -47,11 +39,11 @@ Ticket.init(
                 key: 'id'
             }
         },
-        support_user_content_id: {
+        message_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'support_user_content',
+                model: 'message',
                 key: 'id'
             }
         }

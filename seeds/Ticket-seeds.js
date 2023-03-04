@@ -2,22 +2,20 @@ const { Ticket } = require('../models/Ticket');
 
 const TicketData = [
     {
-      title: 'My first ticket',
+      title: 'Login issue',
       status: 'open',
       priority: 'high',
       user_id: 1,
-      user_content_id: 1,
-      support_user_id: 1,
-      support_user_content_id: 1
+      support_user_id: 2,
+      message_id: [1,2,3,4,5] // TODO: not sure if the key value can be in array format
     },
     {
-      title: 'My second ticket',
+      title: 'T-Shirt Size Enquiry',
       status: 'closed',
       priority: 'low',
-      user_id: 2,
-      user_content_id: 2,
-      support_user_id: 1,
-      support_user_content_id: 2
+      user_id: 3,
+      support_user_id: 4,
+      message_id: [6,7] // TODO: not sure if the key value can be in array format
     }
   ];
   

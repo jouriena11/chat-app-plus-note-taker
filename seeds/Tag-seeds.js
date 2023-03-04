@@ -2,9 +2,9 @@ const { Tag } = require('../models/Tag');
 const sequelize = require('../config/connection');
 
 const tagData = [
-  { name: 'Urgent' },
-  { name: 'High Priority' },
-  { name: 'Low Priority' },
+  { name: 'Urgent' }, // TODO: to treat this as an option for a support_user to choose with a dropdown menu?
+  { name: 'High Priority' }, // TODO: to treat this as an option for a support_user to choose with a dropdown menu?
+  { name: 'Low Priority' }, // TODO: to treat this as an option for a support_user to choose with a dropdown menu?
   { name: 'Bug' },
   { name: 'Feature Request' },
 ];

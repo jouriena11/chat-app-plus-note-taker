@@ -21,7 +21,7 @@ User.init(
             allowNull: false,
         },
         password: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING(200),
             allowNull: false,
             validate: {
                 len: [8],
@@ -42,10 +42,10 @@ User.init(
             validate: {
                 isEmail: true,
             },
-        },
+        }
     },
     {
-        sequelize, // pass the sequelize instance here
+        sequelize,
         timestamps: true,
         freezeTableName: true,
         underscored: true,
