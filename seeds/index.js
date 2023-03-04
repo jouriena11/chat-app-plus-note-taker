@@ -1,10 +1,9 @@
-const seedUserContent = require('./UserContent-seeds');
 const seedUser = require('./User-seeds');
 const seedTicketTags = require('./TicketTag-seeds');
 const seedTicket = require('./Ticket-seeds');
 const seedTags = require('./Tag-seeds');
 const seedSupportUser = require('./SupportUser-seeds');
-const seedSupportUserContent = require('./SupportContent-seeds');
+const seedMessages = require('./message-seeds')
 
 const sequelize = require('../config/connection');
 
@@ -14,9 +13,6 @@ const seedAll = async () => {
     
     await seedUser();
     console.log('\n----- USER SEEDED -----\n');
-
-    await seedUserContent();
-    console.log('\n----- USER CONTENT SEEDED -----\n');
   
     await seedTicket();
     console.log('\n----- TICKET SEEDED -----\n');
@@ -30,8 +26,8 @@ const seedAll = async () => {
     await seedSupportUser();
     console.log('\n----- SUPPORT USER SEEDED -----\n');
 
-    await seedSupportUserContent();
-    console.log('\n----- SUPPORT USER CONTENT SEEDED -----\n');
+    await seedMessages();
+    console.log('\n----- MESSAGE SEEDED -----\n');
 
     process.exit(0);
   };
