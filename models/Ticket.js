@@ -16,12 +16,12 @@ Ticket.init(
             allowNull: false
         },
         status: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
+            type: DataTypes.ENUM(["open", "pending", "closed"]),
+            allowNull: true
         },
         priority: {
-            type: DataTypes.STRING(20),
-            allowNull: false
+            type: DataTypes.ENUM(["urgent", "high", "normal", "low"]),
+            allowNull: true
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -35,15 +35,7 @@ Ticket.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'support_user',
-                key: 'id'
-            }
-        },
-        message_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'message',
+                model: 'user',
                 key: 'id'
             }
         }

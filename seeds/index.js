@@ -1,9 +1,8 @@
 const seedUser = require('./User-seeds');
-const seedTicketTags = require('./TicketTag-seeds');
+// const seedTicketTags = require('./TicketTag-seeds');
 const seedTicket = require('./Ticket-seeds');
-const seedTags = require('./Tag-seeds');
-const seedSupportUser = require('./SupportUser-seeds');
-const seedMessages = require('./message-seeds')
+// const seedTags = require('./Tag-seeds');
+// const seedMessages = require('./message-seeds')
 
 const sequelize = require('../config/connection');
 
@@ -17,17 +16,14 @@ const seedAll = async () => {
     await seedTicket();
     console.log('\n----- TICKET SEEDED -----\n');
     
-    await seedTags();
-    console.log('\n----- TAGS SEEDED -----\n');
+    // await seedTags();
+    // console.log('\n----- TAGS SEEDED -----\n');
   
-    await seedTicketTags();
-    console.log('\n----- TICKET TAGS SEEDED -----\n');
-  
-    await seedSupportUser();
-    console.log('\n----- SUPPORT USER SEEDED -----\n');
+    // await seedTicketTags();
+    // console.log('\n----- TICKET TAGS SEEDED -----\n');
 
-    await seedMessages();
-    console.log('\n----- MESSAGE SEEDED -----\n');
+    // await seedMessages();
+    // console.log('\n----- MESSAGE SEEDED -----\n');
 
     process.exit(0);
   };

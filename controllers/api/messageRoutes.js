@@ -4,9 +4,10 @@ const withAuth = require("../../utils/auth");
 
 
 // TODO: POST request - store a chat message into the database
-router.post('/', (req, res) => {
+router.post('/save-message', async (req, res) => {
     try {
-        // req.body
+        const messageData = await Message.create(req.body); // TODO: submitted frontend req.body data to include created_by_user_id
+        res.status(200).json(messageData)
         
     } catch(err) {
         res.status(500).json(err);
@@ -14,7 +15,7 @@ router.post('/', (req, res) => {
   })
 
 // TODO: GET request - get all past messages by ticket_id and sort in ASC order (i.e. chronological order)
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     try {
         // req.body
 
