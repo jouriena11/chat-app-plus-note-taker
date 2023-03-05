@@ -2,7 +2,6 @@ const User = require('./User');
 const Ticket = require('./Ticket');
 const Tag = require('./Tag');
 const TicketTag = require('./TicketTag');
-const SupportUser = require('./SupportUser');
 const Message = require('./Message');
 
 
@@ -16,12 +15,11 @@ Ticket.belongsTo(User, {
     onDelete: 'set null'
 });
 
-// A support_user can have many tickets and support-user-contents, whereas each ticket and contents belong to only 1 support_user.
-SupportUser.hasMany( Ticket, { 
+User.hasMany(Ticket, {
     foreignKey: 'support_user_id' 
 });
 
-Ticket.belongsTo(SupportUser, {
+Ticket.belongsTo(User, {
     foreignKey: 'support_user_id',
     onDelete: 'set null'
 });
@@ -56,6 +54,5 @@ module.exports = {
     Ticket,
     Tag,
     TicketTag,
-    SupportUser,
     Message
 }

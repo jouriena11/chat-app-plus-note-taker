@@ -34,7 +34,7 @@ const messageData = [
     {
         ticket_id: 2,
         message: "Thank you for contacting us today! Can you please share a link to the product page to me?",
-        created_by: 4
+        created_by: 2
     },
 ]
 

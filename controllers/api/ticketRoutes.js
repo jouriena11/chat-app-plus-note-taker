@@ -2,9 +2,9 @@ const router = require("express").Router();
 const { Ticket, Message } = require("../../models");
 
 // TODO: GET requests - get all tickets
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
     try {
-
+        
     } catch(err) {
         res.status(500).json(err);
     }
@@ -19,10 +19,11 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// TODO: POST request - create a new ticket
-router.post('/', async (req, res) => {
+// POST request - create a new ticket
+router.post('/create-ticket', async (req, res) => {
     try {
-
+        const ticketData = await Ticket.create(req.body);
+        res.status(200).json(ticketData);
     } catch(err) {
         res.status(500).json(err);
     }

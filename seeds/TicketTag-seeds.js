@@ -1,4 +1,4 @@
-const { TicketTag, Ticket, Tag } = require('../models/TicketTag');
+const { TicketTag, Ticket, Tag } = require('../models');
 
 const TicketTagData = [
   {
