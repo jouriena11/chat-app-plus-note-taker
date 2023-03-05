@@ -17,13 +17,13 @@
         </div>
         <% } %>
       <p>Log in</p>
-      <form action="/login" method="post">
+      <form id="login-form">
         <div class="user-box">
-          <input type="email" name="email" type="text" required />
+          <input type="email" name="email" type="text" id="email-login" required />
           <label>Email</label>
         </div>
         <div class="user-box">
-          <input name="password" type="password" required />
+          <input name="password" type="password" id="password-login" required />
           <label>Password</label>
         </div>
         <a href="#">
@@ -37,5 +37,6 @@
       </form>
       <p>Don't have an account? <a href="/register" class="a2">Sign up!</a></p>
     </div>
+    <script src="js/login.js"></script>
   </body>
 </html>

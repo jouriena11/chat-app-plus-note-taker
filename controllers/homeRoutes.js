@@ -1,35 +1,50 @@
 const router = require('express').Router();
 // const { User } = require('../models');
 
-const {checkAuthenticated, checkNotAuthenticated} =  require ('../utils/auth');
-
 // Routes
-router.get("/", checkNotAuthenticated,(req, res) => {
+router.get("/",(req, res) => {
+  console.log("\n\nRendering dashboard\n\n");
   res.render("dashboard"); //landing page
 });
 
-router.get("/main", checkAuthenticated, (req, res) => {
-  res.render("main", {name: req.user.name}); // home page with the dashboard
+router.get("/main", (req, res) => 
+{
+  console.log("\n\nRendering main\n\n");
+  res.render("main"); // home page with the dashboard
 })  
 
-router.get("/login", checkNotAuthenticated, (req, res) => {
+router.get("/login", (req, res) => {
+  console.log("\n\nRendering Login\n\n");
   res.render("login");
 });
 
-router.get("/register", checkNotAuthenticated,  (req, res) => {
+router.get("/register",  (req, res) => {
+  console.log("\n\nRendering register\n\n");
   res.render("register");
 });
 
-router.get("*", checkNotAuthenticated ,(req, res) => {
+router.get("*" , (req, res) => {
   res.render("404");
 });
 
+// configure login post routes //also redirect me to the home page called dashboard.ejs
+// if a user is not logged in, redirect to the login page
+router.post( "/login", (req, res) => {
+    console.log("\n\nLogging in\n\n")
+    res.status(200).redirect("/main");
+});
+  
+//configure register post routes
+router.post("/register", async (req, res) => {
+  
+    res.status(200).redirect("/login");
 
-router.delete("/logout", (req, res) => {
-  req.logout(req.user, err => {
-    if (err) return next(err);
-    res.redirect("/");
-  });
+});
+
+router.post("/logout", (req, res) => {
+  console.log("\n\nLogging out\n\n");
+  
+  res.status(200).redirect("/");
 });
 
 module.exports = router;

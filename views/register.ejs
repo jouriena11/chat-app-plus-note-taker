@@ -16,17 +16,17 @@
       </div>
       <% } %>
       <p>Register</p>
-      <form action="/register" method="post">
+      <form id="signup-form">
         <div class="user-box">
-          <input type="name" name="name" type="text" required />
+          <input type="name" name="name" type="text" id="username-signup" required />
           <label>Full Name</label>
         </div>
         <div class="user-box">
-          <input type="email" name="email" type="text" required />
+          <input type="email" name="email" type="text" id="email-signup" required />
           <label>Email</label>
         </div>
         <div class="user-box">
-          <input name="password" type="password" required />
+          <input name="password" type="password" id="password-signup" required />
           <label>Password</label>
         </div>
 
@@ -41,5 +41,6 @@
       </form>
       <p>Already have an account? <a href="/login" class="a2">Log in!</a></p>
     </div>
+    <script src="js/register.js"></script>
   </body>
 </html>

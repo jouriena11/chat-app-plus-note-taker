@@ -11,17 +11,18 @@
         <a href="#">Home</a>
         <a href="#">Filter</a>
         <a href="#">Create Ticket</a>
-        <form action="/logout?_method=DELETE" method="POST">
-            <button type="submit" class="logout-btn" type="submit">LogOut</button>
+        <form>
+            <button type="submit" class="logout-btn" type="submit" id="logout">LogOut</button>
         </form>
         
       </div>
     </div>
 
     <div class="welcome">
-        <h1>Welcome to Chat Support <%= name %> </h1>
+        <h1>Welcome to Chat Support</h1>
     </div>
 
     <!-- Your website content goes here -->
+    <script src="js/logout.js"></script>
   </body>
 </html>
