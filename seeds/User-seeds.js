@@ -30,6 +30,7 @@ let UserData = [
 
 const saltRounds = 10;
 
+async function seed() {
 const hashedUserData = await Promise.all(
   UserData.map(async (user) => {
     const hashedPassword = await bcrypt.hash(user.password, saltRounds);
@@ -49,4 +50,8 @@ module.exports = {
     down: async (queryInterface, Sequelize) => {
       await queryInterface.bulkDelete("users", null, {});
     },
-  };
+
+}
+};
+
+seed();
