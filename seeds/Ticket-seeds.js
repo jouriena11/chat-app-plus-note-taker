@@ -1,24 +1,21 @@
-const { Ticket } = require('../models');
+const { Ticket } = require("../models");
 
 const TicketData = [
-    {
-      title: 'Login issue',
-      status: 'open',
-      priority: 'high',
-      user_id: 1,
-      support_user_id: 2,
-      message_id: [1,2,3,4,5] // TODO: not sure if the key value can be in array format
-    },
-    {
-      title: 'T-Shirt Size Enquiry',
-      status: 'closed',
-      priority: 'low',
-      user_id: 3,
-      support_user_id: 4,
-      message_id: [6,7] // TODO: not sure if the key value can be in array format
-    }
-  ];
-  
+  {
+    title: "Login issue",
+    status: "open",
+    priority: "high",
+    user_id: 1,
+    support_user_id: 3,
+  },
+  {
+    title: "T-Shirt Size Enquiry",
+    status: "closed",
+    priority: "low",
+    user_id: 2,
+    support_user_id: 3,
+  },
+];
 
 const seedTicket = () => Ticket.bulkCreate(TicketData);
 

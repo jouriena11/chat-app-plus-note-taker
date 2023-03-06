@@ -1,16 +1,17 @@
-const seed = require('./User-seeds');
+const sequelize = require('../config/connection');
+
+const seedUser = require('./User-seeds');
 const seedTicketTags = require('./TicketTag-seeds');
 const seedTicket = require('./Ticket-seeds');
 const seedTags = require('./Tag-seeds');
-const seedMessages = require('./message-seeds')
+const seedMessages = require('./message-seeds');
 
-const sequelize = require('../config/connection');
 
 const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
     
-    await seed();
+    await seedUser();
     console.log('\n----- USER SEEDED -----\n');
   
     await seedTicket();
