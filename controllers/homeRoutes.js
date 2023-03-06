@@ -1,22 +1,23 @@
 const router = require('express').Router();
 const { User } = require('../models');
-const {checkAuthenticated, checkNotAuthenticated} =  require ('../utils/auth');
 
 // Routes
-router.get("/", checkNotAuthenticated,(req, res) => {
+router.get("/",(req, res) => {
   res.render("dashboard", {
     user_id_session: req.session.user_id,
   }); //landing page
 });
 
-router.get("/main", checkAuthenticated, async (req, res) => {
-  console.log("\n\nLOGGED IN USER");
-  console.log(req.user);
+router.get("/main", async (req, res) => {
+  console.log("\n\nTrying to render");
+  console.log(req.session.user_id);
   console.log("\n\n");
 
-  const user = await User.findOne({ where: { email: req.user.email } });
+  const user = await User.findOne({ where: { id: req.session.user_id } });
 
-  res.render("main", {username: req.user.username,
+  console.log(user);
+
+  res.render("main", {username: user.dataValues.username,
                       id: user.dataValues.id,
                       email: user.dataValues.email,
                       role: user.dataValues.userType
@@ -24,24 +25,17 @@ router.get("/main", checkAuthenticated, async (req, res) => {
   ); // home page with the dashboard
 })  
 
-router.get("/login", checkNotAuthenticated, (req, res) => {
+router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/register", checkNotAuthenticated,  (req, res) => {
+router.get("/register",  (req, res) => {
   res.render("register");
 });
 
-router.get("*", checkNotAuthenticated ,(req, res) => {
+router.get("*" ,(req, res) => {
   res.render("404");
 });
 
-
-router.delete("/logout", (req, res) => {
-  req.logout(req.user, err => {
-    if (err) return next(err);
-    res.redirect("/");
-  });
-});
 
 module.exports = router;

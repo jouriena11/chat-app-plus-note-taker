@@ -6,6 +6,9 @@ const saltRounds = 10;
 
 router.post('/login', async (req, res) => {
   try {
+
+    console.log("\n\nTrying to login\n\n");
+
     // Find the user who matches the posted e-mail address
     const userData = await User.findOne({ where: { email: req.body.email } });
 
@@ -31,8 +34,18 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
+      console.log("\n\nRedirect to main\n\n");
+
+      console.log("user_id = " + req.session.user_id);
+      console.log("logged_in = " + req.session.logged_in);
+
+      res.status(200).redirect("/main");
+
+      //res.json({ user: userData, message: 'You are now logged in!' });
+    });    
+
+    console.log("user_id = " + req.session.user_id);
+    console.log("logged_in = " + req.session.logged_in);
 
   } catch (err) {
     console.error(err);
@@ -41,9 +54,13 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+
+  console.log("\n\nLogging out\n\n");
+
   if (req.session.logged_in) {
     // Remove the session variables
     req.session.destroy(() => {
+      console.log("\n\nDestroy the session\n\n");
       res.status(204).end();
     });
   } else {

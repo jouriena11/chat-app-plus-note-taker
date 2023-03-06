@@ -11,7 +11,7 @@
         <a href="#">Home</a>
         <a href="#">Filter</a>
         <a href="#">Create Ticket</a>
-        <form action="/logout?_method=DELETE" method="POST">
+        <form onsubmit="logout(event)">
             <button type="submit" class="logout-btn" type="submit">LogOut</button>
         </form>
         
@@ -19,16 +19,17 @@
     </div>
 
     <div class="welcome">
-        <h1>Welcome to Chat Support <%= name %> </h1>
+        <h1>Welcome to Chat Support <%= username %> </h1>
         <h3>Id =  <%= id %> </h3>
         <h3>Email address =  <%= email %> </h3>
         <% if (role == 'user') { %>
-          <h3><%= name %> is a User</h3>
+          <h3><%= username %> is a User</h3>
           <%} else { %>
-            <h3><%= name %> is a Support</h3>
+            <h3><%= username %> is a Support</h3>
         <% } %>
     </div>
 
     <!-- Your website content goes here -->
+    <script src="js/logout.js"></script>
   </body>
 </html>
