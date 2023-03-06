@@ -20,6 +20,13 @@
 
     <div class="welcome">
         <h1>Welcome to Chat Support <%= name %> </h1>
+        <h3>Id =  <%= id %> </h3>
+        <h3>Email address =  <%= email %> </h3>
+        <% if (role == 'user') { %>
+          <h3><%= name %> is a User</h3>
+          <%} else { %>
+            <h3><%= name %> is a Support</h3>
+        <% } %>
     </div>
 
     <!-- Your website content goes here -->

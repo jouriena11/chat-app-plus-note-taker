@@ -11,7 +11,9 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const routes = require('./controllers');
-const {checkAuthenticated, checkNotAuthenticated} =  require ('./utils/auth');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sequelize = require('./config/connection');
+const {checkNotAuthenticated} =  require ('./utils/auth');
 
 const port = process.env.PORT || 3001;
 
@@ -34,6 +36,9 @@ app.use(
     secret: "secret",
     resave: false, // don't save session if unmodified
     saveUninitialized: false, // don't create session until something stored
+    store: new SequelizeStore({
+      db: sequelize,
+    }),
   })
 );
 app.use(passport.initialize());
@@ -79,5 +84,7 @@ try {
 }
 });
 
-// Listen on port 3000
-app.listen(port, () => console.log(`Listening on port ${port}`));
+// Start database and server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(port, () => console.log(`Listening on port ${port}`));
+});
