@@ -29,6 +29,7 @@ initializePassport(
 // store information in an array
 const users = [];
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(

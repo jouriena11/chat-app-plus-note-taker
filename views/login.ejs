@@ -17,13 +17,13 @@
         </div>
         <% } %>
       <p>Log in</p>
-      <form action="/login" method="post">
+      <form action="/login" onsubmit="loginFormHandler(event)" method="post">
         <div class="user-box">
-          <input type="email" name="email" type="text" required />
+          <input id="email-input" type="email" name="email" type="text" required />
           <label>Email</label>
         </div>
         <div class="user-box">
-          <input name="password" type="password" required />
+          <input id="password-input" name="password" type="password" required />
           <label>Password</label>
         </div>
         <a href="#">
@@ -39,3 +39,6 @@
     </div>
   </body>
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script src="../public/js/login.js"></script>

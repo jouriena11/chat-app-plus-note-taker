@@ -5,7 +5,9 @@ const {checkAuthenticated, checkNotAuthenticated} =  require ('../utils/auth');
 
 // Routes
 router.get("/", checkNotAuthenticated,(req, res) => {
-  res.render("dashboard"); //landing page
+  res.render("dashboard", {
+    user_id_session: req.session.user_id,
+  }); //landing page
 });
 
 router.get("/main", checkAuthenticated, async (req, res) => {

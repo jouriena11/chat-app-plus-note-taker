@@ -6,7 +6,7 @@ const { Ticket } = require("../../models");
 router.get('/all', async (req, res) => {
     try {
         const allTickets = await Ticket.findAll();
-        res.status(200).json(allTickets);
+        res.status(200).json(allTickets)
 
     } catch(err) {
         res.status(500).json(err);
@@ -41,6 +41,7 @@ router.get('/:id', async (req, res) => {
 // api/ticket/create-ticket
 router.post('/create-ticket', async (req, res) => {
     // TODO: to auto-specify default support_user?
+    // Open ticket > start chat button?
     try {
         const ticketData = await Ticket.create(req.body);
         res.status(200).json(ticketData);
@@ -49,11 +50,11 @@ router.post('/create-ticket', async (req, res) => {
     }
 })
 
-
 // UPDATE request - update ticket title, status, priority, and/or support_user_id
 // api/ticket/update/${id}
 router.put('update/:id', async (req, res) => {
     try {
+        // TODO: create 'view' for user profile
         // TODO: update ticket title
         // TODO: update ticket status
         // TODO: update priority
@@ -73,6 +74,7 @@ router.delete('delete/:id', async (req, res) => {
                 id: req.params.id
             }
         })
+        
         res.status(200).json({
             message: "Your ticket has been deleted.",
             rows_deleted: delTicket // 1
