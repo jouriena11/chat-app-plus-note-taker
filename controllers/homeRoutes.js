@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User } = require('../models');
-
 const {checkAuthenticated, checkNotAuthenticated} =  require ('../utils/auth');
 
 // Routes
@@ -17,13 +16,12 @@ router.get("/main", checkAuthenticated, async (req, res) => {
 
   const user = await User.findOne({ where: { email: req.user.email } });
 
-  console.log(user.dataValues);
-
-  res.render("main", {name: req.user.name,
+  res.render("main", {username: req.user.username,
                       id: user.dataValues.id,
                       email: user.dataValues.email,
                       role: user.dataValues.userType
-  }); // home page with the dashboard
+  }
+  ); // home page with the dashboard
 })  
 
 router.get("/login", checkNotAuthenticated, (req, res) => {
