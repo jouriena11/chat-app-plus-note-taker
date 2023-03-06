@@ -9,6 +9,8 @@ router.post('/login', async (req, res) => {
 
     console.log("\n\nTrying to login\n\n");
 
+    console.log(req.body.email);
+
     // Find the user who matches the posted e-mail address
     const userData = await User.findOne({ where: { email: req.body.email } });
 
@@ -18,6 +20,9 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
+
+    console.log(userData);
+    console.log(req.body.password);
 
     // Verify the posted password with the password store in the database
     const validPassword = await userData.checkPassword(req.body.password);
@@ -72,9 +77,11 @@ router.post('/logout', (req, res) => {
 // api/user/signup
 router.post("/signup", async (req, res) => {
   try {
-    const salt = bcrypt.genSaltSync(saltRounds);
-    const hash = bcrypt.hashSync(req.body.password, salt);
-    req.body.password = hash
+    // const salt = bcrypt.genSaltSync(saltRounds);
+    // const hash = bcrypt.hashSync(req.body.password, salt);
+    // req.body.password = hash
+
+    console.log(req.body);
 
     const userData = await User.create(req.body);
     res.status(200).json(userData);

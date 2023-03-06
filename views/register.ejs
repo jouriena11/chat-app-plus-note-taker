@@ -16,26 +16,30 @@
       </div>
       <% } %>
       <p>Register</p>
-      <form action="/register" method="post">
+      <form onsubmit="signupFormHandler(event)">
         <div class="user-box">
           <input id="username-input" type="name" name="name" type="text" required />
           <label>Username</label>
         </div>
         <div class="user-box">
-          <input id="first-name-input" type="name" name="name" type="text" required />
+          <input id="first-name-input" type="name" name="first_name" type="text" required />
           <label>First Name</label>
         </div>
         <div class="user-box">
-          <input id="last-name-input" type="name" name="name" type="text" required />
+          <input id="last-name-input" type="name" name="last_name" type="text" required />
           <label>Last Name</label>
         </div>
         <div class="user-box">
-          <input id ="email-input" type="email" name="email" type="text" required />
+          <input id ="email-input" type="email" name="email" type="email" required />
           <label>Email</label>
         </div>
         <div class="user-box">
           <input id="password-input" name="password" type="password" required />
           <label>Password</label>
+        </div>
+        <div class="user-box">
+          <input id="role-input" name="role" type="text" required />
+          <label>Role</label>
         </div>
 
         <a href="#">
@@ -49,7 +53,8 @@
       </form>
       <p>Already have an account? <a href="/login" class="a2">Log in!</a></p>
     </div>
+    <script src="js/signup.js"></script>
   </body>
 </html>
 
-<script src="../public/js/register.js"></script>
+

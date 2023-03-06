@@ -3,8 +3,8 @@ const loginFormHandler = async (event) => {
   console.log("\n\nLog in event handler called\n\n");
   event.preventDefault();
 
-  const email = document.getElementById("email-input").value;
-  const password = document.getElementById("password-input").value;
+  const email = document.getElementById("email-input").value.trim();
+  const password = document.getElementById("password-input").value.trim();
 
   console.log('email = '+ email);
   console.log('password = '+ password);
