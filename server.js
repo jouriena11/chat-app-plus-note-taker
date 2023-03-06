@@ -35,6 +35,7 @@ app.use(flash());
 app.use(
   session({
     secret: "secret",
+    cookie: {},
     resave: false, // don't save session if unmodified
     saveUninitialized: false, // don't create session until something stored
     store: new SequelizeStore({
