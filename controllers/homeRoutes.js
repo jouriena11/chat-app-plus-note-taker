@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { User } = require('../models');
+const { User } = require('../models');
 
 const {checkAuthenticated, checkNotAuthenticated} =  require ('../utils/auth');
 
@@ -8,8 +8,20 @@ router.get("/", checkNotAuthenticated,(req, res) => {
   res.render("dashboard"); //landing page
 });
 
-router.get("/main", checkAuthenticated, (req, res) => {
-  res.render("main", {name: req.user.name}); // home page with the dashboard
+router.get("/main", checkAuthenticated, async (req, res) => {
+  console.log("\n\nLOGGED IN USER");
+  console.log(req.user);
+  console.log("\n\n");
+
+  const user = await User.findOne({ where: { email: req.user.email } });
+
+  console.log(user.dataValues);
+
+  res.render("main", {name: req.user.name,
+                      id: user.dataValues.id,
+                      email: user.dataValues.email,
+                      role: user.dataValues.userType
+  }); // home page with the dashboard
 })  
 
 router.get("/login", checkNotAuthenticated, (req, res) => {

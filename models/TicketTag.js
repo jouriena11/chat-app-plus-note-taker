@@ -1,41 +1,41 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require('../config/connection');
+const sequelize = require("../config/connection");
 
 class TicketTag extends Model {}
 
 TicketTag.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-          },
-        ticket_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'ticket',
-                key: 'id'
-            }
-        },
-        tag_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'tag',
-                key: 'id'
-            }
-        }
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-            sequelize,
-            timestamps: false,
-            freezeTableName: true,
-            underscored: true,
-            modelName: 'ticket_tag',
-    }
+    ticket_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "ticket",
+        key: "id",
+      },
+    },
+    tag_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "tag",
+        key: "id",
+      },
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "ticket_tag",
+  }
 );
 
 module.exports = TicketTag;

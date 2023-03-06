@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const { User } = require("../models");
 
 let UserData = [
@@ -8,7 +7,7 @@ let UserData = [
     first_name: "John",
     last_name: "Doe",
     email: "john@example.com",
-    userType: "user"
+    userType: "user",
   },
   {
     username: "jane_doe",
@@ -16,7 +15,7 @@ let UserData = [
     first_name: "Jane",
     last_name: "Doe",
     email: "jane@example.com",
-    userType: "support"
+    userType: "support",
   },
   {
     username: "jim_jeffries",
@@ -24,36 +23,10 @@ let UserData = [
     first_name: "Jim",
     last_name: "Jeffries",
     email: "jimJeffries@example.com",
-    userType: "user"
+    userType: "user",
   },
 ];
 
-const saltRounds = 10;
+const seedUser = () => User.bulkCreate(UserData, { individualHooks: true });
 
-async function seed() {
-const hashedUserData = await Promise.all(
-  UserData.map(async (user) => {
-    const hashedPassword = await bcrypt.hash(user.password, saltRounds);
-
-    return {
-      ...user,
-      password: hashedPassword,
-    };
-  })
-);
-
-module.exports = {
-    up: async (queryInterface, Sequelize) => {
-      await queryInterface.bulkInsert("users", hashedUserData);
-    },
-  
-    down: async (queryInterface, Sequelize) => {
-      await queryInterface.bulkDelete("users", null, {});
-    },
-
-}
-};
-
-seed();
-
-module.exports = seed
+module.exports = seedUser;
