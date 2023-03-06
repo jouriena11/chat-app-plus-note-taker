@@ -6,7 +6,6 @@ const seedTicket = require('./Ticket-seeds');
 const seedTags = require('./Tag-seeds');
 const seedMessages = require('./message-seeds');
 
-
 const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
