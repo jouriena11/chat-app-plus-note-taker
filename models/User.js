@@ -8,10 +8,10 @@ class User extends Model {
   }
 
   static async checkUsername(username) {
-    // `static` allows calling SupportUser.checkUsername(username) without having to create a new `SupportUser` instance
-    const supportUser = await SupportUser.findOne({ where: { username } });
+    // `static` allows calling User.checkUsername(username) without having to create a new `User` instance
+    const user = await User.findOne({ where: { username } });
 
-    if (supportUser) {
+    if (user) {
       throw new Error("Username already exists.");
     }
 
@@ -57,6 +57,7 @@ User.init(
     userType: {
       type: DataTypes.ENUM(["user", "support"]), // capital letters not an issue; default to lowercase
       allowNull: true,
+      defaultValue: "user"
     },
   },
   {
