@@ -1,28 +1,31 @@
 import { io } from 'socket.io-client';
 
 const socket = io('http://localhost:3001');
-    displayMessage = (`You are connected with ${socket.id}`);
 
-socket.on("receive-message", message => { //receive-message event
-    displayMessage = (message);
+const messageInput = document.getElementById('message-input');
+const chatInput = document.getElementById('chat-input');
+const sendButton = document.getElementById('send-button');
+const messageDisplay = document.getElementById('message-display');
+
+let displayMessage = '';
+
+socket.on("connect", () => {
+  displayMessage = `You are connected with ${socket.id}`;
 });
 
-const message = messageInput.value;
-const chat = chatInput.value;
+socket.on("receive-message", message => { //receive-message event
+  displayMessage = message;
+});
 
-if(message === "") {
-    returndisplayMessage(message);
-    socket.emit("send-message", message, chat); //send-message event
+sendButton.addEventListener('click', () => {
+  const message = messageInput.value;
+  const chat = chatInput.value;
 
-    // const saveMessage = {
-    //     ticket_id: "", // TODO: to pass ticket_id
-    //     message: message,
-    //     created_by: "" // TODO: to pass user_id
-    // }
-    // TODO: axios.post(saveMessage)
+  if (message === "") {
+    return displayMessage(message);
+  }
 
-    messageInput.value = "";
-}
+  socket.emit("send-message", { username: 'user1', text: message }, chat); //send-message event
 
-// TODO Depending on the way we create the chat rooms (either modals or another window location),
-// a function here to join said chat will need to be done.
+  messageInput.value = "";
+});

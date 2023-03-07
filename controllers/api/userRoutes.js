@@ -1,10 +1,7 @@
-const router = require('express').Router();
-const { User } = require('../../models');
-// const withAuth = require("../../utils/auth");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
+const router = require("express").Router();
+const { User } = require("../../models");
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
 
     console.log("\n\nTrying to login\n\n");
@@ -17,7 +14,7 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
@@ -30,7 +27,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
@@ -46,11 +43,7 @@ router.post('/login', async (req, res) => {
 
       res.status(200).redirect("/main");
 
-      //res.json({ user: userData, message: 'You are now logged in!' });
     });    
-
-    console.log("user_id = " + req.session.user_id);
-    console.log("logged_in = " + req.session.logged_in);
 
   } catch (err) {
     console.error(err);
@@ -77,16 +70,24 @@ router.post('/logout', (req, res) => {
 // api/user/signup
 router.post("/signup", async (req, res) => {
   try {
-    // const salt = bcrypt.genSaltSync(saltRounds);
-    // const hash = bcrypt.hashSync(req.body.password, salt);
-    // req.body.password = hash
+
+
+    console.log("\n\nTrying to sign up\n\n")
 
     console.log(req.body);
+  
+    const newUser = await User.create(req.body);
 
-    const userData = await User.create(req.body);
-    res.status(200).json(userData);
+    res.status(200).json(newUser);
+
   } catch (err) {
-    res.status(500).json(err);
+
+
+    console.log(err);
+
+    res.status(500).json({
+      message: "Error creating user."
+    });
   }
 });
 

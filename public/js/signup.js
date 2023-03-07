@@ -6,7 +6,7 @@ const signupFormHandler = async (event) => {
   const last_name = document.getElementById('last-name-input').value.trim();
   const email = document.getElementById('email-input').value.trim();
   const password = document.getElementById('password-input').value.trim();
-  const userType = document.getElementById('role-input').value.trim().toLowerCase();
+  const userType = "user";
 
   console.log("Sign up form submitted");
   console.log("username = " + username);
@@ -15,7 +15,7 @@ const signupFormHandler = async (event) => {
   console.log("email = " + email);
   console.log("password = " + password);
 
-  if (username && first_name && last_name && email && password && userType) {
+  if (username && first_name && last_name && email && password) {
     const response = await fetch('/api/user/signup', {
       method: 'POST',
       body: JSON.stringify({ username, first_name, last_name, email, password, userType }),

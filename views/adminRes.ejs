@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/adminres.css" />
+    <title>Last Document</title>
+  </head>
+  <body>
+    <!-- Navbar with back button -->
+    <nav>
+      <a href="#" onclick="history.back()">Back</a>
+
+      <span>Chat Support</span>
+    </nav>
+
+    <!-- Form with topic and tag input -->
+    <form>
+      <label for="tags">Tags:</label>
+      <input type="text" id="tags" name="tags" />
+
+      <!-- Section for user's questions -->
+      <section>
+        <h2>User Question</h2>
+        <textarea id="question" name="question" rows="4" cols="50"></textarea>
+      </section>
+
+      <section>
+        <h2>Admin Response</h2>
+        <textarea id="question" name="question" rows="4" cols="50"></textarea>
+      </section>
+
+      <!-- Button to submit the form -->
+      <button class="open-button" type="submit">Open</button>
+
+      <!-- Support button -->
+      <div class="support-button">
+        <a href="#">Need additional support? Contact us</a>
+      </div>
+    </form>
+  </body>
+</html>

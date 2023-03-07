@@ -26,3 +26,4 @@ const loginFormHandler = async (event) => {
 };
 
 console.log("The login script has been executed");
+
