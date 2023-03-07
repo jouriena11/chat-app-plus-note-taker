@@ -1,35 +1,10 @@
-# **Online Chat Support**
-
-
-## **Project Description**
-
-When signing up for the first time, the application will check from the database if the following properties are duplications of existing records:
-- username
-- email
-
-If duplicated, the application will (automatically, i.e. without pressing `submit` button?) prompt an error message and asks the user to use a different username or email.
-
-Once logged in, an **`end user`** would be able to perform the following tasks:
-- Create a new ticket (POST request)
-- Read support_user's reply to the ticket (GET request)
-- Read all existing tickets and contents within (as well as username/first_name/last_name of a support_user and timestamp) (GET request)
-- Update personal profiles, e.g. username, password, first_name, last_name, email (PUT request) >> once updated, existing records must be updated as well
-- Update ticket status (PUT request)
-- Delete a ticket (DELETE request)? -- in real practice, we might not want to allow deletion as the records accessible to both parties could prevent any disputes in the future
-- Filter tickets by status, ticket_id, updatedAt in DESC order, and tag
-
-Once logged in, a **`support_user`** would be able to perform the following tasks:
-- Read an end user's submitted ticket and contents within (as well as username/first name/last name of the end-user and timestamp)
-- Update personal profiles, e.g. username, password, first_name, last_name, email (PUT request) >> once updated, existing records must be updated as well
-- Submit a reply to the ticket (POST request)
-- Update ticket status (PUT request)
-- Update ticket priority (PUT request)
-- Filter tickets by status, ticket_id, updatedAt in DESC order, and tag
-
+# **Chat Support**
 ---
-## **URLs**
-- [Deployed Application]()
-- [GitHub Repository URL]()
+
+
+## **Description**
+
+This site was created using EJS, CSS, JavaScript mainly with multiple libraries listed below with the idea in mind to create an MVP for a Chat Support which allows a user to talk in real time with a support user allwoing them to explain their issues and sorting out their ticket on the spot while being given the option to see previous tickets posted so if the issue reappears the user can see how it was solved previously.
 
 ---
 ## **Table of Contents**
@@ -46,12 +21,13 @@ The following npm libraries must be installed to run this application:
 - dotenv v16.0.3
 - ejs v3.1.8
 - express v4.18.2
-- express-handlebars v6.0.7 
 - express-session v1.17.3
 - lint v0.8.19
 - mysql2 v3.1.2
 - nodemon v2.0.20
 - sequelize v6.29.0
+- socket.io v4.6.1
+- socket.io-client v4.6.1
 
 These installations can be simply done by the running the following command line at the root directory: 
 ```
@@ -60,21 +36,61 @@ npm i
 
 ---
 ## **Technologies Used**
-- HTML
 - CSS
-- Bootstrap
+- JavaScript
+- EJS
 - Node.js
 - MySQL
+- Sequalize
 - Express.js
+- socket.io
+- dotenv
+- lint
+- nodemon
 
 ---
 
 ## **Usage**
 
+To use this site, you Log in or Create an accout to log in with, then create a ticket with content of an issue youre having and communicate with a support user to fix the related issue
+
+Below is an image of the site :
+
+<!-- ![This is an image of the deployed site.](./assets/img/Whats%20To%20Eat%20-%20Screenshot.png) -->
+
+---
+
+## **Credits**
+
+[Piyawit Teeraprasert (John)'s Github Profile ](https://github.com/jouriena11).
+---
+[Jisha Bhat's Github Profile ](https://github.com/BhatJ).
+---
+[Naod Hunde's Github Profile ](https://github.com/naodhu).
+---
+[Jackson Kent's Github Profile ](https://github.com/jacko2611).
+---
+[Jordan O'Grady's Github Profile ](https://github.com/JordanNotAvailable).
+---
+
+---
+
+## **License**
+
+NIL
+
+---
+
+## **Deployment**
+
+<!--  [This is an external link to the live site jordannotavailable.github.io/project-1/](https://jouriena11/chat-support) -->
 
 ---
 
 ## **Future Developments**
 - Forgot password handling
-- filter in DESC order
-- include a Model for an admin_user that can approve a new support_user account and assign a support_user to a ticket
+- Giving user ability to change profile data
+- Filter in order of date
+- Include a Model for an admin_user that can approve a new support_user account and assign a support_user to a ticket
+- Adding more personality to your profile: profile picture, site colour scheme
+- Call option for support
