@@ -58,7 +58,10 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 // Set routes
+const apiRoutes = require('./controllers/api');
+app.use('/api', apiRoutes);
 app.use(routes);
+
 
 // configure login post routes //also redirect me to the home page called dashboard.ejs
 // if a user is not logged in, redirect to the login page
@@ -69,22 +72,24 @@ app.post( "/login", checkNotAuthenticated, passport.authenticate("local", {
 })
 );
 
-//configure register post routes
-app.post("/register", checkNotAuthenticated, async (req, res) => {
-try {
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  users.push({
-    id: Date.now().toString(),
-    name: req.body.name,
-    email: req.body.email,
-    password: hashedPassword,
-  });
-  console.log(users);
-  res.redirect("/login");
-} catch {
-  res.redirect("/register");
-}
-});
+//configure signup post routes
+// app.post("/signup", checkNotAuthenticated, async (req, res) => {
+// try {
+//   const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//   users.push({
+//     id: Date.now().toString(),
+//     name: req.body.name,
+//     email: req.body.email,
+//     password: hashedPassword,
+//   });
+//   console.log(users);
+//   res.redirect("/login");
+// } catch {
+//   res.redirect("/signup");
+// }
+// });
+
+
 
 // Start database and server
 sequelize.sync({ force: false }).then(() => {

@@ -28,14 +28,13 @@ router.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
-router.get("/register", checkNotAuthenticated,  (req, res) => {
-  res.render("register");
+router.get("/signup", checkNotAuthenticated,  (req, res) => {
+  res.render("signup");
 });
 
 router.get("*", checkNotAuthenticated ,(req, res) => {
   res.render("404");
 });
-
 
 router.delete("/logout", (req, res) => {
   req.logout(req.user, err => {
