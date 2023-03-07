@@ -1,28 +1,16 @@
-// check if user is authenticated
-const checkAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/main");
-}
+const withAuth = (req, res, next) => {
+  // If the user is not logged in, redirect the request to the login route
 
-// check if user is not authenticated
-const checkNotAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return res.redirect("/");
+
+  if (!req.session.logged_in) {
+    console.log("\n--- Not logged in ---\n");
+    console.log(req.session.logged_in + "\n");
+    res.redirect('/');
   } else {
+    console.log("\n--- Logged in ---\n");
+    console.log(req.session.logged_in + "\n");
     next();
   }
-}
+};
 
-module.exports = {checkAuthenticated, checkNotAuthenticated};
-
-// TODO: to merge the function above into one?
-
-// const checkAuth = (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     res.redirect("/");
-//   } else {
-//     next();
-//   }
-// }
+module.exports = withAuth;

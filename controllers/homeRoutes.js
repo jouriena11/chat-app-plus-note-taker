@@ -1,14 +1,13 @@
 const router = require('express').Router();
 const { User } = require('../models');
+const withAuth = require('../utils/auth');
 
 // Routes
 router.get("/",(req, res) => {
-  res.render("dashboard", {
-    user_id_session: req.session.user_id,
-  }); //landing page
+  res.render("dashboard"); //landing page
 });
 
-router.get("/main", async (req, res) => {
+router.get("/main", withAuth, async (req, res) => {
   console.log("\n\nTrying to render");
   console.log(req.session.user_id);
   console.log("\n\n");
