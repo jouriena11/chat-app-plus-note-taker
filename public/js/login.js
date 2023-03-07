@@ -23,3 +23,35 @@ const loginFormHandler = async (event) => {
     }
   }
 };
+
+// function loginFormHandler(event) {
+//   event.preventDefault();
+//   const emailInput = document.getElementById('email-input').value;
+//   const passwordInput = document.getElementById('password-input').value;
+  
+//   const loginData = {
+//     email: emailInput,
+//     password: passwordInput
+//   }
+
+//   console.log(loginData);
+
+//   axios.post('/api/user/login', loginData, {
+//     headers: {
+//       "Content-Type": "application/json"
+//     }
+//   })
+//   .then(response => {
+//     console.log(response.data);
+//     if(response.status === 200) {
+//       window.location.href = '/';
+//     } else {
+//       alert('Invalid username or password');
+//       emailInput.value = '';
+//       passwordInput.value = '';
+//     }
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   })
+// }
