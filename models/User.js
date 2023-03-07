@@ -4,14 +4,16 @@ const sequelize = require("../config/connection");
 
 class User extends Model {
   checkPassword(loginPw) {
+    console.log("loginPw = " + loginPw);
+    console.log("this.password = " + this.password);
     return bcrypt.compareSync(loginPw, this.password);
   }
 
   static async checkUsername(username) {
-    // `static` allows calling User.checkUsername(username) without having to create a new `User` instance
-    const user = await User.findOne({ where: { username } });
+    // `static` allows calling SupportUser.checkUsername(username) without having to create a new `SupportUser` instance
+    const supportUser = await SupportUser.findOne({ where: { username } });
 
-    if (user) {
+    if (supportUser) {
       throw new Error("Username already exists.");
     }
 
@@ -57,7 +59,6 @@ User.init(
     userType: {
       type: DataTypes.ENUM(["user", "support"]), // capital letters not an issue; default to lowercase
       allowNull: true,
-      defaultValue: "user"
     },
   },
   {

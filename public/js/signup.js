@@ -1,31 +1,33 @@
-const signUpBtn = document.getElementById('sign-up-form');
-signUpBtn.addEventListener('submit', signUp)
+const signupFormHandler = async (event) => {
+  event.preventDefault();
 
-async function signUp(event) {
-    event.preventDefault();
-    
-    console.log("sign-up-btn clicked");
-    
-    const username = document.getElementById('username-input').value;
-    const password = document.getElementById('password-input').value;
-    const firstName = document.getElementById('first-name-input').value;
-    const lastName = document.getElementById('last-name-input').value;
-    const email = document.getElementById('email-input').value;
+  const username = document.getElementById('username-input').value.trim();
+  const first_name = document.getElementById('first-name-input').value.trim();
+  const last_name = document.getElementById('last-name-input').value.trim();
+  const email = document.getElementById('email-input').value.trim();
+  const password = document.getElementById('password-input').value.trim();
+  const userType = "user";
 
-    const signUpData = {
-            username: username,
-            password: password,
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            userType: "user"
-        };
+  console.log("Sign up form submitted");
+  console.log("username = " + username);
+  console.log("first name = " + first_name);
+  console.log("last name = " + last_name);
+  console.log("email = " + email);
+  console.log("password = " + password);
 
-        try {
-            const response = await axios.post("/api/user/signup", signUpData);
-            console.log("response.data => ", response.data);
-            window.location.replace("/login");
-        } catch(err) {
-            console.error(err)
-        }
-}
+  if (username && first_name && last_name && email && password) {
+    const response = await fetch('/api/user/signup', {
+      method: 'POST',
+      body: JSON.stringify({ username, first_name, last_name, email, password, userType }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/login');
+    } else {
+      alert('Failed to sign up.');
+    }
+  }
+};
+
+console.log("The signup script has been executed");

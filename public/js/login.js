@@ -1,10 +1,13 @@
 const loginFormHandler = async (event) => {
   // Stop the browser from submitting the form so we can do so with JavaScript
-  console.log("pass");
+  console.log("\n\nLog in event handler called\n\n");
   event.preventDefault();
 
-  const email = document.getElementById("email-input").value;
-  const password = document.getElementById("password-input").value;
+  const email = document.getElementById("email-input").value.trim();
+  const password = document.getElementById("password-input").value.trim();
+
+  console.log('email = '+ email);
+  console.log('password = '+ password);
 
   if (email && password) {
     // Send the e-mail and password to the server
@@ -15,43 +18,12 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      //document.location.replace('/');
+      document.location.replace('/main');
     } else {
       alert("Failed to log in");
     }
   }
 };
 
-// function loginFormHandler(event) {
-//   event.preventDefault();
-//   const emailInput = document.getElementById('email-input').value;
-//   const passwordInput = document.getElementById('password-input').value;
-  
-//   const loginData = {
-//     email: emailInput,
-//     password: passwordInput
-//   }
+console.log("The login script has been executed");
 
-//   console.log(loginData);
-
-//   axios.post('/api/user/login', loginData, {
-//     headers: {
-//       "Content-Type": "application/json"
-//     }
-//   })
-//   .then(response => {
-//     console.log(response.data);
-//     if(response.status === 200) {
-//       window.location.href = '/';
-//     } else {
-//       alert('Invalid username or password');
-//       emailInput.value = '';
-//       passwordInput.value = '';
-//     }
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   })
-// }
