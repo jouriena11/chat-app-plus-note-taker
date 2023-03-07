@@ -86,3 +86,130 @@
         background-color: #333;
     }
 }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  nav {
+    background-color: #333;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  nav button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  nav button:last-child {
+    margin-right: 0;
+  }
+  
+  nav button:hover {
+    background-color: #3e8e41;
+  }
+  
+  section {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 50px 0;
+  }
+  
+  .welcome {
+    font-size: 36px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 50px 20px;
+  }
+  
+  .right-section {
+    width: 800px;
+    margin-left: 20px;
+  }
+  
+  .card {
+    height: 10rem;
+    margin-bottom: 20px;
+    background-color: #fee5e5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .textBox {
+    padding: 20px;
+  }
+  
+  .h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .tag1,
+  .tag2,
+  .tag3 {
+    flex: 1;
+    margin: 0 10px;
+    margin-bottom: 50px;
+    
+  }
+  
+  .form-container {
+    background-color: #fee5e5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 20px;
+    display: grid;
+  }
+  
+  .tag-name {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+  
+  .tag-box {
+    background-color: #fffafa;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #f23e33;
+  }
+  .grid {
+    width: 800px;
+  }
