@@ -15,6 +15,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection');
 const {checkNotAuthenticated} =  require ('./utils/auth');
 
+
 const port = process.env.PORT || 3001;
 
 const app = express();
@@ -59,13 +60,14 @@ app.set("view engine", "ejs");
 
 // Set routes
 const apiRoutes = require('./controllers/api');
+const withAuth = require("./utils/auth");
 app.use('/api', apiRoutes);
 app.use(routes);
 
 
 // configure login post routes //also redirect me to the home page called dashboard.ejs
 // if a user is not logged in, redirect to the login page
-app.post( "/login", checkNotAuthenticated, passport.authenticate("local", {
+app.post( "/login", withAuth, passport.authenticate("local", {
   successRedirect: "/main", //redirect to the home page
   failureRedirect: "/login",
   failureFlash: true,
