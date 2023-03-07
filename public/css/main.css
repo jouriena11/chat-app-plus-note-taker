@@ -1,4 +1,8 @@
 /* Basic Navbar Styling */
+* {
+  font-family: "Lato", sans-serif;
+}
+
 .navbar {
     background-color: #333;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
