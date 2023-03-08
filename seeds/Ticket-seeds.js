@@ -6,14 +6,14 @@ const TicketData = [
     status: "open",
     priority: "high",
     user_id: 1,
-    support_user_id: 3,
+    support_user_id: 2,
   },
   {
     title: "T-Shirt Size Enquiry",
     status: "closed",
     priority: "low",
     user_id: 2,
-    support_user_id: 3,
+    support_user_id: 2,
   },
 ];
 
