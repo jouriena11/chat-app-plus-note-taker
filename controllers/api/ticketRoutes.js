@@ -39,9 +39,11 @@ router.get('/:id', async (req, res) => {
 
 // POST request - create a new ticket
 // api/ticket/create-ticket
+// TODO: to auto-specify default support_user
 router.post('/create-ticket', async (req, res) => {
-    // TODO: to auto-specify default support_user?
-    // Open ticket > start chat button?
+    // Auto-specify default support_user
+    req.body.support_user_id = 1; // Or whichever default support user ID you want
+
     try {
         const ticketData = await Ticket.create(req.body);
         res.status(200).json(ticketData);
@@ -50,15 +52,46 @@ router.post('/create-ticket', async (req, res) => {
     }
 })
 
+
 // UPDATE request - update ticket title, status, priority, and/or support_user_id
 // api/ticket/update/${id}
-router.put('update/:id', async (req, res) => {
+router.put('/update/:id', async (req, res) => {
     try {
-        // TODO: create 'view' for user profile
+        const ticketData = await Ticket.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        if(!ticketData) {
+            res.status(404).json({
+                message: "Ticket not found."
+            });
+            return;
+        }
+
         // TODO: update ticket title
+        if(req.body.title) {
+            ticketData.title = req.body.title;
+        }
+
         // TODO: update ticket status
+        if(req.body.status) {
+            ticketData.status = req.body.status;
+        }
+
         // TODO: update priority
+        if(req.body.priority) {
+            ticketData.priority = req.body.priority;
+        }
+
         // TODO: update support_user_id, i.e. reassign
+        if(req.body.support_user_id) {
+            ticketData.support_user_id = req.body.support_user_id;
+        }
+
+        await ticketData.save();
+        res.status(200).json(ticketData);
     
     } catch(err) {
         res.status(500).json(err);
@@ -67,7 +100,7 @@ router.put('update/:id', async (req, res) => {
 
 // DELETE request - delete a ticket by id
 // api/ticket/delete/${id}
-router.delete('delete/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         const delTicket = await Ticket.destroy({
             where: {

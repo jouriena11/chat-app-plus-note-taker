@@ -11,13 +11,13 @@
   <body>
     <!-- Navbar with back button -->
     <nav>
-      <a href="#" onclick="history.back()">Back</a>
+      <a href="/main" onclick="history.back()">Back</a>
 
       <span>Chat Support</span>
     </nav>
 
     <!-- Form with topic and tag input -->
-    <form>
+    <form action="adminRes" method="POST">
       <label for="tags">Tags:</label>
       <input type="text" id="tags" name="tags" />
 
