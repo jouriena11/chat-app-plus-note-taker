@@ -13,9 +13,17 @@ router.get("/main", withAuth, async (req, res) => {
   console.log("\n\n");
 
   const user = await User.findOne({ where: { id: req.session.user_id } });
-  const tickets = await Ticket.findAll({
-    where: { user_id: req.session.user_id },
-  });
+
+  let tickets;
+
+  if (user.dataValues.userType === 'user') {
+    tickets = await Ticket.findAll({ where: { user_id: req.session.user_id } });
+  } else{
+    tickets = await Ticket.findAll({ where: { support_user_id: req.session.user_id} });
+  }
+
+  console.log(user.dataValues);
+  console.log(tickets.dataValues);
 
   res.render("main", {
     id: user.dataValues.id,
