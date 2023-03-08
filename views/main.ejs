@@ -15,7 +15,10 @@
         <div class="col-6 d-flex justify-content-end align-items-center">
           <a class="me-3 text-white text-decoration-none" href="#">Home</a>
           <a class="me-3 text-white text-decoration-none" href="#">Filter</a>
-          <a class="me-3 text-white text-decoration-none" href="#">Create Ticket</a>
+          <button id="create-ticket-button"> 
+            <a class="me-3 text-white text-decoration-none" href="#" type="submit">Create Ticket</a>
+          </button>
+          
           <form onsubmit="logout(event)">
               <button type="submit" class="logout-btn" type="submit">LogOut</button>
           </form>
@@ -23,123 +26,41 @@
       </div>
     </div>
 
-    <!-- <div class="navbar">
-      <a class="navbar-brand" href="#">Chat Support</a>
-      <div>
-        <a href="#">Home</a>
-        <a href="#">Filter</a>
-        <a href="#">Create Ticket</a>
-        <form onsubmit="logout(event)">
-            <button type="submit" class="logout-btn" type="submit">LogOut</button>
-        </form>
-        
-      </div>
-    </div> -->
-
     <div class="welcome">
-        <h1>Welcome to Chat Support, <%= first_name %> <%= last_name %> </h1>
-        <h3>Username:  <%= username %> </h3>
-        <h3>Id:  <%= id %> </h3>
-        <h3>Email address:  <%= email %> </h3>
-        <% if (role == 'user') { %>
-          <h3><%= username %> is a User</h3>
-          <%} else { %>
-            <h3><%= username %> is a Support</h3>
+      <h1 style="font-size: 48px; color: #333; text-align: center; margin-bottom: 30px; animation: fade-in 1s;">Welcome to Chat Support <%= username %></h1>
+      <hr style="height: 2px; border: none; background-color: #333; margin: 20px auto; width: 50%; animation: slide-in 1s;">
+      <div class="details-container" style="display: flex; flex-direction: column; align-items: center; animation: pop-in 1s;">
+        <h3 style="font-size: 28px; color: #666;">ID: <%= id %></h3>
+        <h3 style="font-size: 28px; color: #666;">Email address: <%= email %></h3>
+        <% if (role === 'user') { %>
+          <h3 style="font-size: 28px; color: #666;"><%= username %> is a User</h3>
+        <% } else { %>
+          <h3 style="font-size: 28px; color: #666;"><%= username %> is a Support</h3>
         <% } %>
+      </div>
     </div>
-    <nav>
-      <div class="nav-left">
-        <button>Create</button>
-        <button>Filter</button>
-      </div>
-      <div class="nav-right">
-        <button>Log out</button>
-      </div>
-    </nav>
-    <section>
-      <h1 class="welcome">Welcome to Chat Support </h1>
-    </section>
-    <main>
-      <div class="container">
-        <div class="right-section">
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="grid">
-          <div class="tag1">
-            <div class="form-container">
-              <p class="tag-name">Tag Name</p>
-              <div class="tag-box"></div>
-              <button class="delete-button">Delete</button>
-            </div>
-          </div>
-          <div class="tag2">
-            <div class="form-container">
-              <p class="tag-name">Tag Name</p>
-              <div class="tag-box"></div>
-              <button class="delete-button">Delete</button>
-            </div>
-          </div>
-          <div class="tag3">
-            <div class="form-container">
-              <p class="tag-name">Tag Name</p>
-              <div class="tag-box"></div>
-              <button class="delete-button">Delete</button>
-            </div>
-          </div>
-        </div>
+
+<!-- a form with fields for the ticket title and message, as well as a submit button. -->
+    <div id="new-ticket-view">
+      <h2>Create a New Ticket</h2>
+      <form id="new-ticket-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Submit Ticket</button>
+      </form>
+    </div>
+    
+    
+
+    
         
-      </div>
+      
 
     <!-- Your website content goes here -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="js/logout.js"></script>
+    <script src="createticket.js"></script>
   </body>
 </html>
