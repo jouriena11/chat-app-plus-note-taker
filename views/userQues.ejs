@@ -13,52 +13,22 @@
       <a href="/main" onclick="history.back()">Back</a>
     </nav>
 
-    <!-- Form with topic and tag input -->
-    <h1>Topic of the Question</h1>
-<!-- <form action="/adminRes" method="POST">
-  <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
-  <label for="nme"><span></span></label>
-  <textarea name="message" rows="2" class="question" id="msg" required autocomplete="off"></textarea>
-  <label for="msg"><span>What's your message?</span></label>
-  <input type="submit" value="Submit!" />
-</form> -->
+    <h1>My Ticketing System</h1>
 
+    <button id="create-ticket-button" type="submit">Create Ticket</button>
 
-<!-- Button to trigger the modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newTicketModal">
-  Create New Ticket
-</button>
+    <div id="new-ticket-view">
+      <h2>Create New Ticket</h2>
+      <form id="new-ticket-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" />
 
-<!-- Modal for creating a new ticket -->
-<div class="modal fade" id="newTicketModal" tabindex="-1" role="dialog" aria-labelledby="newTicketModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newTicketModalLabel">New Ticket</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="ticketTitle">Title</label>
-            <input type="text" class="form-control" id="ticketTitle" placeholder="Enter ticket title">
-          </div>
-          <div class="form-group">
-            <label for="ticketMessage">Message</label>
-            <textarea class="form-control" id="ticketMessage" rows="3" placeholder="Enter ticket message"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="submitTicketBtn">Submit Ticket</button>
-      </div>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit" id="submitTicketBtn">Submit Ticket</button>
+      </form>
     </div>
-  </div>
-</div>
-
   </body>
   <script src="createticket.js"></script>
 </html>
