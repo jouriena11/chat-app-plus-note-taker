@@ -2,9 +2,9 @@
 const express = require("express");
 const flash = require("express-flash");
 const session = require("express-session");
-const routes = require('./controllers');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sequelize = require('./config/connection');
+const routes = require("./controllers");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const sequelize = require("./config/connection");
 
 const port = process.env.PORT || 3001;
 

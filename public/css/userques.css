@@ -173,3 +173,10 @@ display: none;
 }
 }
 
+#new-ticket-view {
+  display: none;
+}
+
+#submitTicketBtn:hover {
+  background-color: #ddd;
+}
