@@ -12,6 +12,11 @@
     <title>Signup</title>
   </head>
   <body>
+    <div class="ocean">
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+
     <div class="gradient"></div>
     <div class="login-box">
       <% if (messages.error) { %>
@@ -20,7 +25,7 @@
       </div>
       <% } %>
       <p>Register</p>
-      <form onsubmit="signupFormHandler(event)">
+      <form onsubmit="signupFormHandler(event)" id="myForm">
         <div class="user-box">
           <input
             id="username-input"
@@ -66,14 +71,13 @@
           <label>Password</label>
         </div>
 
-        <a href="#">
-          <button id="sign-up-btn" type="submit"></button>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Sign Up
-        </a>
+        <button type="submit">
+          Sign up
+          <div class="arrow-wrapper">
+              <div class="arrow"></div>
+      
+          </div>
+      </button>
       </form>
       <p>Already have an account? <a href="/login" class="a2">Log in!</a></p>
     </div>
