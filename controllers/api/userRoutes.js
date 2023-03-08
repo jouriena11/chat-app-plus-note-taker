@@ -3,7 +3,6 @@ const { User } = require("../../models");
 
 router.post("/login", async (req, res) => {
   try {
-
     console.log("\n\nTrying to login\n\n");
 
     console.log(req.body.email);
@@ -35,24 +34,21 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       console.log("\n\nRedirect to main\n\n");
 
       console.log("user_id = " + req.session.user_id);
       console.log("logged_in = " + req.session.logged_in);
 
       res.status(200).redirect("/main");
-
-    });    
-
+    });
   } catch (err) {
     console.error(err);
     res.status(400).send(err);
   }
 });
 
-router.post('/logout', (req, res) => {
-
+router.post("/logout", (req, res) => {
   console.log("\n\nLogging out\n\n");
 
   if (req.session.logged_in) {
@@ -70,22 +66,18 @@ router.post('/logout', (req, res) => {
 // api/user/signup
 router.post("/signup", async (req, res) => {
   try {
-    
-    console.log("\n\nTrying to sign up\n\n")
+    console.log("\n\nTrying to sign up\n\n");
 
     console.log(req.body);
-  
+
     const newUser = await User.create(req.body);
 
     res.status(200).json(newUser);
-
   } catch (err) {
-
-
     console.log(err);
 
     res.status(500).json({
-      message: "Error creating user."
+      message: "Error creating user.",
     });
   }
 });

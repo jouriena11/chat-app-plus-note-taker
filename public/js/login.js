@@ -6,8 +6,8 @@ const loginFormHandler = async (event) => {
   const email = document.getElementById("email-input").value.trim();
   const password = document.getElementById("password-input").value.trim();
 
-  console.log('email = '+ email);
-  console.log('password = '+ password);
+  console.log("email = " + email);
+  console.log("password = " + password);
 
   if (email && password) {
     // Send the e-mail and password to the server
@@ -18,7 +18,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/main');
+      document.location.replace("/main");
     } else {
       alert("Failed to log in");
     }
@@ -26,4 +26,3 @@ const loginFormHandler = async (event) => {
 };
 
 console.log("The login script has been executed");
-
