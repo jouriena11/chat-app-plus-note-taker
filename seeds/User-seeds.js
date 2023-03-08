@@ -2,6 +2,7 @@ const { User } = require("../models");
 
 let UserData = [
   {
+    id: 1,
     username: "john_doe",
     password: "password123",
     first_name: "John",
@@ -10,6 +11,7 @@ let UserData = [
     userType: "user",
   },
   {
+    id: 2,
     username: "jane_doe",
     password: "password456",
     first_name: "Jane",
@@ -18,6 +20,7 @@ let UserData = [
     userType: "support",
   },
   {
+    id: 3,
     username: "jim_jeffries",
     password: "password789",
     first_name: "Jim",

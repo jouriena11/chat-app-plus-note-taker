@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Ticket } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Routes
@@ -13,8 +13,7 @@ router.get("/main", withAuth, async (req, res) => {
   console.log("\n\n");
 
   const user = await User.findOne({ where: { id: req.session.user_id } });
-
-  console.log(user);
+  const tickets = await Ticket.findAll({ where: { user_id: req.session.user_id } });
 
   res.render("main", {
     id: user.dataValues.id,
@@ -22,7 +21,8 @@ router.get("/main", withAuth, async (req, res) => {
     first_name: user.dataValues.first_name,
     last_name: user.dataValues.last_name,
     email: user.dataValues.email,
-    role: user.dataValues.userType
+    role: user.dataValues.userType,
+    tickets: tickets
   }
   ); // home page with the dashboard
 })  
