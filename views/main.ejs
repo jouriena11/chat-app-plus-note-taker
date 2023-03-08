@@ -57,55 +57,23 @@
     <main>
       <div class="container">
         <div class="right-section">
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
+
+          <!-- ejs loop to create tickets -->
+
+          <% tickets.forEach(function(ticket) { %>
+            <div class="card">
+              <div class="textBox">
+                <div class="textContent">
+                  <p class="h1">Ticket: <%= ticket.id %></p>
+                  <p class="h4">Title: <%= ticket.title %></p>
+                  <p class="h4">Status: <%= ticket.status %></p>
+                  <p class="h4">Priority: <%= ticket.priority %></p>
+                  <p class="h4">Created: <%= ticket.createdAt %></p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="textBox">
-              <div class="textContent">
-                <p class="h1">Tag Name</p>
-              </div>
-            </div>
-          </div>
+          <% }); %> 
+          
         </div>
         <div class="grid">
           <div class="tag1">
