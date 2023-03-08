@@ -42,9 +42,9 @@
         <h3>Id:  <%= id %> </h3>
         <h3>Email address:  <%= email %> </h3>
         <% if (role == 'user') { %>
-          <h3><%= username %> is a User</h3>
+          <h3>You are logged in as user!</h3>
           <%} else { %>
-            <h3><%= username %> is a Support</h3>
+            <h3>You are logged in as support!</h3>
         <% } %>
     </div>
     <nav>
@@ -52,13 +52,8 @@
         <button>Create</button>
         <button>Filter</button>
       </div>
-      <div class="nav-right">
-        <button>Log out</button>
-      </div>
     </nav>
-    <section>
-      <h1 class="welcome">Welcome to Chat Support </h1>
-    </section>
+
     <main>
       <div class="container">
         <div class="right-section">
