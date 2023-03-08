@@ -16,10 +16,12 @@ router.get("/main", withAuth, async (req, res) => {
 
   let tickets;
 
-  if (user.dataValues.userType === 'user') {
+  if (user.dataValues.userType === "user") {
     tickets = await Ticket.findAll({ where: { user_id: req.session.user_id } });
-  } else{
-    tickets = await Ticket.findAll({ where: { support_user_id: req.session.user_id} });
+  } else {
+    tickets = await Ticket.findAll({
+      where: { support_user_id: req.session.user_id },
+    });
   }
 
   console.log(user.dataValues);
