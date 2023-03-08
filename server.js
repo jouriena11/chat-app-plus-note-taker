@@ -1,10 +1,12 @@
 // imports
 const express = require("express");
+const socketio = require("socket.io");
 const flash = require("express-flash");
 const session = require("express-session");
 const routes = require("./controllers");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/connection");
+const { Message } = require("./models");
 
 const port = process.env.PORT || 3001;
 
@@ -39,6 +41,23 @@ app.set("view engine", "ejs");
 app.use(routes);
 
 // Start database and server
+
 sequelize.sync({ force: false }).then(() => {
-  app.listen(port, () => console.log(`Listening on port ${port}`));
+  const server = app.listen(port, () =>
+    console.log(`Listening on port ${port}`)
+  );
+  const io = socketio(server, {
+    cors: {
+      origin: ["http://localhost:3001"],
+    },
+  });
+
+  io.on("connection", (socket) => {
+    console.log(`user id ${socket.id} connected`);
+    socket.on("send-message", async (messageObj) => {
+      //save to database
+      await Message.create(messageObj);
+      console.log(`user id ${socket.id} send = ${messageObj.message}`);
+    });
+  });
 });

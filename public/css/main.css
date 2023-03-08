@@ -259,3 +259,14 @@ body {
     background-position: 5% 0%;
   }
 }
+
+.ticket-stack {
+  position: relative;
+  height: 700px;
+  padding: 2rem;
+  overflow-y: scroll;
+  background-color: ghostwhite;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}

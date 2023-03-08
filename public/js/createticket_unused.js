@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const createTicketButton = document.getElementById("create-ticket-button");
   createTicketButton.addEventListener("click", () => {
@@ -12,25 +13,31 @@ newTicketForm.addEventListener("submit", (event) => {
   const title = document.getElementById("title").value;
   const message = document.getElementById("message").value;
   const ticketData = {
-    title,
+    title: title,
     status: "open",
     priority: "normal",
-    user_id: req.session.user_id,
+    user_id: userId, // TODO: to fix this
     support_user_id: 2,
   };
 
   // Send the ticketData object to your ticketRoutes.js file using an AJAX request
   // assuming this is how you do it??
-  fetch("/api/ticket/create-ticket", {
+  const createTicketResponse = fetch("/api/ticket/create-ticket", {
     method: "POST",
+    body: JSON.stringify(ticketData),
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(ticketData),
   })
+
+    if (!createTicketResponse.ok) {
+    throw new Error("Failed to create a ticket");
+  }
     .then((response) => response.json())
     .then((data) => {
       console.log(data); // Handle the response data here
     })
     .catch((error) => console.error(error));
 });
+

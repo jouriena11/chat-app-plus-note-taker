@@ -5,14 +5,19 @@ const { Message } = require("../../models");
 // api/messages/save-message
 router.post("/save-message", async (req, res) => {
   try {
-    // TODO: submitted frontend req.body data to include created_by (user_id)
+    // console.log('req.body => ', req.body);
     // create a new message using the data submitted in the form
-    const MessageData = {
-      message: req.body.message,
-      ticket_id: req.body.ticket_id,
-      created_by: req.session.user_id,
-    };
+
+    // const MessageData = {
+    //   message: req.body.message,
+    //   ticket_id: req.body.ticket_id,
+    //   created_by: req.session.user_id,
+    // };
+    
     const messageData = await Message.create(req.body);
+
+    // console.log("messageData => ", messageData);
+    
     res.status(200).json(messageData);
   } catch (err) {
     res.status(500).json(err);

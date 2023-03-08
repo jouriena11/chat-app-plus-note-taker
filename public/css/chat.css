@@ -1,0 +1,58 @@
+.chat-section > .message-section {
+    position: relative;
+    height: 500px;
+    padding: 2rem;
+    overflow-y: scroll;
+    background-color: ghostwhite;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-section > .form-message-section {
+    padding: 1rem;
+    background-color: ghostwhite;
+    border: 1px solid black;
+}
+
+.sender-msg {
+    padding: 1rem;
+    margin-left: auto;
+}
+
+.receiver-msg {
+    padding: 1rem;
+    margin-right: auto;
+}
+
+.sender-msg > span:first-child {
+    padding: 1rem;
+    background-color: dodgerblue;
+    border-radius: 0.5rem;
+    color: white;
+    width: 100%;
+}
+.sender-msg > span:nth-child(2) {
+    margin-top: 1.2rem;
+    color: gray;
+    font-size: 0.8rem;
+    display: block;
+    text-align: right;
+}
+
+.receiver-msg > span:first-child {
+    padding: 1rem;
+    background-color: gray;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+.receiver-msg > span:nth-child(2) {
+    margin-top: 1.2rem;
+    color: gray;
+    font-size: 0.8rem;
+    display: block;
+}
+
+.form-msg {
+
+}
