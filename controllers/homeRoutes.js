@@ -16,10 +16,13 @@ router.get("/main", withAuth, async (req, res) => {
 
   console.log(user);
 
-  res.render("main", {username: user.dataValues.username,
-                      id: user.dataValues.id,
-                      email: user.dataValues.email,
-                      role: user.dataValues.userType
+  res.render("main", {
+    id: user.dataValues.id,
+    username: user.dataValues.username,
+    first_name: user.dataValues.first_name,
+    last_name: user.dataValues.last_name,
+    email: user.dataValues.email,
+    role: user.dataValues.userType
   }
   ); // home page with the dashboard
 })  

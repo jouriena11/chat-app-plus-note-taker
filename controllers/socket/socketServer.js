@@ -92,5 +92,3 @@ socket.on("send-message", (message, chat) => { //send-message event
     });
 });
 });
-
-

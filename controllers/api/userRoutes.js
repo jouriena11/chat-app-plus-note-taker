@@ -70,8 +70,7 @@ router.post('/logout', (req, res) => {
 // api/user/signup
 router.post("/signup", async (req, res) => {
   try {
-
-
+    
     console.log("\n\nTrying to sign up\n\n")
 
     console.log(req.body);
