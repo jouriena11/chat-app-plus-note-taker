@@ -33,7 +33,6 @@ const sendMessage = () => {
   }
 };
 
-//
 const submitTicket = async (event) => {
   try {
     event.preventDefault();
@@ -98,10 +97,10 @@ const renderNewTicket = (currentTicketId, ticketData) => {
   );
 
   const html = `
-  <a href="#" class="text-decoration-none text-black" onclick="">
+  <a href="#" class="text-decoration-none text-black" data-ticket-id="<%= ticket.id %>" onclick="getMessages(event)">
             <div class="card"> 
               <div class="textBox">
-                <div class="textContent lh-1">
+                <div class="textContent lh-1 text-left">
                   <h3>Ticket: ${currentTicketId}</h3>
                   <div class="pt-2">
                     <p>Title:  ${ticketData.title}</p>
@@ -115,6 +114,30 @@ const renderNewTicket = (currentTicketId, ticketData) => {
   `;
   newTicketWhenLoggedIn.insertAdjacentHTML("beforeend", html); // a newly created ticket card will be placed at the end of the ticket stack
 };
+
+async function getMessages(event) {
+  event.preventDefault();
+
+  const ticketId = event.currentTarget.dataset.ticketId;
+
+  // console.log("ticketId", ticketId)
+
+  const getMessageResponse = await fetch(`/api/messages/${ticketId}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  // console.log("getMessageResponse => ", getMessageResponse)
+
+  if (!getMessageResponse.ok) {
+    throw new Error("Failed to get past messages");
+  }
+
+  // TODO: to fix bug - still cannot run past this.
+
+  const pastMessages = await getMessageResponse.json();
+  console.log("messages =>", pastMessages);
+}
 
 // When clicking on `create a ticket` button,
 createTicketBtn.addEventListener("click", (event) => {
