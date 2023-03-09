@@ -3,13 +3,14 @@ const submitTicketBtn = document.getElementById("submit-ticket-btn");
 const chatMsgInput = document.getElementById("chat-message-input");
 const sendMsgBtn = document.getElementById("send-msg-btn");
 const ticketSubmissionForm = document.getElementById("ticket-submission-form");
+const welcomeMessage = document.getElementById("login-welcome-message");
 const ticketTitle = document.getElementById("ticket-title-input");
+const chatElem = document.getElementById("chat")
+const chatMsgCanvas = document.getElementById("chat-msg-render-canvas");
 let socket = undefined;
 let currentTicketId = -1;
 
 const sendMessage = () => {
-  const chatMsgCanvas = document.getElementById("chat-msg-render-canvas");
-
   if (chatMsgInput.value.trim()) {
     if (socket) {
       // execute the codes if the socket is on, i.e. when submitTicket() function is called.
@@ -115,11 +116,41 @@ const renderNewTicket = (currentTicketId, ticketData) => {
   newTicketWhenLoggedIn.insertAdjacentHTML("beforeend", html); // a newly created ticket card will be placed at the end of the ticket stack
 };
 
+const renderPastMessages = (pastMessages) => {
+
+  if(!welcomeMessage.classList.contains("d-none")) { // (1) hide the welcome message if it's being displayed
+    welcomeMessage.classList.add("d-none");
+  };
+
+  if(!ticketSubmissionForm.classList.contains("d-none")) { // (2) hide the Ticket Submission Form if it's being displayed
+    ticketSubmissionForm.classList.add("d-none");
+  }
+
+  if(chatElem.classList.contains("d-none")) { // (3) display the chat element if it's being hidden
+    chatElem.classList.remove("d-none");
+  }
+
+  chatMsgCanvas.innerHTML = ""; // (4) Clear messages in the chatMsgCanvas
+
+  // (5) Render past messages of this specific ticket id to the chatMsgCanvas
+  pastMessages.forEach((messageObj) => {
+    const formattedDate = dayjs(messageObj.createdAt).format("DD/MM/YYYY HH:mm:ss")
+    const html = `
+    <div class="sender-msg">
+      <span>${messageObj.message}</span>
+      <span>
+      ${formattedDate}
+      </span>
+    </div>
+  `
+  chatMsgCanvas.insertAdjacentHTML('beforeend', html)
+  })
+}
+
 async function getMessages(event) {
   event.preventDefault();
 
   const ticketId = event.currentTarget.dataset.ticketId;
-
   // console.log("ticketId", ticketId)
 
   const getMessageResponse = await fetch(`/api/messages/${ticketId}`, {
@@ -133,17 +164,25 @@ async function getMessages(event) {
     throw new Error("Failed to get past messages");
   }
 
-  // TODO: to fix bug - still cannot run past this.
-
   const pastMessages = await getMessageResponse.json();
   console.log("messages =>", pastMessages);
+  
+  renderPastMessages(pastMessages);
+
 }
 
-// When clicking on `create a ticket` button,
+// When clicking on `create a ticket` button, 
 createTicketBtn.addEventListener("click", (event) => {
-  const welcomeMessage = document.getElementById("login-welcome-message");
-  welcomeMessage.classList.add("d-none"); // (1) hide the welcome message
-  ticketSubmissionForm.classList.remove("d-none"); // (2) display a Ticket Submission Form
+  
+  if(!welcomeMessage.classList.contains("d-none")) { // (1) hide the welcome message if it's being displayed
+    welcomeMessage.classList.add("d-none");
+  };
+
+  if(!chatElem.classList.contains("d-none")) { // (2) hide the chat element if it's being displayed
+    chatElem.classList.add("d-none");
+  }
+  
+  ticketSubmissionForm.classList.remove("d-none"); // (3) display a Ticket Submission Form
 });
 
 // When clicking on the Ticket Submission Form `submit` button, invoke submitTicket() function.
