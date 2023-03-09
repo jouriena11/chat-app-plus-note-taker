@@ -69,7 +69,7 @@ const submitTicket = async (event) => {
     // Clicking on ticket submission button (i.e. create a ticket) will also
     ticketSubmissionForm.classList.add("d-none"); // (1) hide the Ticket Submission Form and
     chat.classList.remove("d-none"); // (2) display a chat support box
-    renderNewTicket(ticketId); // (3) render a new ticket card to ticket stack on the left side of the page
+    renderNewTicket(ticketId, ticketData); // (3) render a new ticket card to ticket stack on the left side of the page
 
     const ticketMessage = document.getElementById("ticket-message-input").value;
 
@@ -92,7 +92,7 @@ const submitTicket = async (event) => {
   }
 };
 
-const renderNewTicket = (ticketId) => {
+const renderNewTicket = (currentTicketId, ticketData) => {
   const newTicketWhenLoggedIn = document.getElementById(
     "render-new-ticket-when-logged-in"
   );
@@ -102,8 +102,11 @@ const renderNewTicket = (ticketId) => {
             <div class="card"> 
               <div class="textBox">
                 <div class="textContent lh-1">
-                  <h3>Ticket: <%= ${ticketId} %></h3>
+                  <h3>Ticket: ${currentTicketId}</h3>
                   <div class="pt-2">
+                    <p>Title:  ${ticketData.title}</p>
+                    <p>Status: ${ticketData.status}</p>
+                    <p>Status: ${ticketData.priority}</p>
                   </div>
                 </div>
               </div>
