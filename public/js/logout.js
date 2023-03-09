@@ -19,4 +19,4 @@ const logout = async () => {
   }
 };
 
-console.log("The logout script has been executed");
+// console.log("The logout script has been executed");

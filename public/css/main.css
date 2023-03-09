@@ -266,7 +266,6 @@ body {
   padding: 2rem;
   overflow-y: scroll;
   background-color: ghostwhite;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
 }

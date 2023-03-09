@@ -28,15 +28,15 @@
           <div id="render-new-ticket-when-logged-in" class="ticket-stack">
             <!-- Rendering stack of tickets here -->
             <% tickets.forEach((ticket) => {%>
-              <a href="#" class="text-decoration-none text-black" onclick="">
+              <a href="#" class="text-decoration-none text-black" data-ticket-id="<%= ticket.id %>" onclick="getMessages(event)">
                 <div class="card"> 
                   <div class="textBox">
-                    <div class="textContent lh-1">
+                    <div class="textContent lh-1 text-left px-3">
                       <h3>Ticket: <%= ticket.id %></h3>
                       <div class="pt-2">
-                        <p>Title: <%= ticket.title %></p>
-                        <p>Status: <%= ticket.status %></p>
-                        <p>Priority: <%= ticket.priority %></p>
+                        <p class="text-left">Title: <%= ticket.title %></p>
+                        <p class="text-left">Status: <%= ticket.status %></p>
+                        <p class="text-left">Priority: <%= ticket.priority %></p>
                       </div>
                     </div>
                   </div>
