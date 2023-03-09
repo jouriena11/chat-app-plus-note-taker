@@ -59,5 +59,6 @@ sequelize.sync({ force: false }).then(() => {
       await Message.create(messageObj);
       console.log(`user id ${socket.id} send = ${messageObj.message}`);
     });
+    
   });
 });
