@@ -168,6 +168,7 @@ async function getMessages(event) {
   console.log("messages =>", pastMessages);
   
   renderPastMessages(pastMessages);
+  sendMessage;
 
 }
 
