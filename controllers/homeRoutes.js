@@ -50,8 +50,8 @@ router.get("/userQues", (req, res) => {
   res.render("userQues");
 });
 
-router.get("/adminRes", (req, res) => {
-  res.render("adminRes");
+router.get("/supportUser", (req, res) => {
+  res.render("supportUser");
 });
 
 // router.get("*", (req, res) => {
