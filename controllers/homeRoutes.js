@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Ticket } = require("../models");
+const { User, Ticket, Message } = require("../models");
 const withAuth = require("../utils/auth");
 
 // Routes
@@ -24,8 +24,8 @@ router.get("/main", withAuth, async (req, res) => {
     });
   }
 
-  console.log(user.dataValues);
-  console.log(tickets.dataValues);
+  // console.log(user.dataValues);
+  // console.log(tickets.dataValues);
 
   res.render("main", {
     id: user.dataValues.id,
@@ -54,8 +54,8 @@ router.get("/adminRes", (req, res) => {
   res.render("adminRes");
 });
 
-router.get("*", (req, res) => {
-  res.render("404");
-});
+// router.get("*", (req, res) => {
+//   res.render("404");
+// });
 
 module.exports = router;
