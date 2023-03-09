@@ -9,21 +9,21 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row my-3 bg-black py-3">
+      <div class="row bg-black py-3">
         <div class="col-6 d-flex align-items-center">
           <a class="navbar-brand ms-3 text-white" href="#">Chat Support</a>
         </div>
         <div class="col-6 d-flex justify-content-end align-items-center">
           <a id="create-ticket-btn" class="me-3 text-white text-decoration-none" href="#" type="submit">Create Ticket</a>
           <form onsubmit="logout(event)">
-              <button type="submit" class="logout-btn" type="submit">LogOut</button>
+              <button type="submit" class="btn" type="submit">LogOut</button>
           </form>
         </div>
       </div>
     </div>
 
     <div class="container-fluid">
-      <div class="row align-items-start">
+      <div class="row align-items-start my-4">
         <div class="col-md-3">
           <div id="render-new-ticket-when-logged-in" class="ticket-stack">
             <!-- Rendering stack of tickets here -->
