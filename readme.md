@@ -50,6 +50,25 @@ npm i
 
 ---
 
+## Screenshots
+
+![App Screenshot]
+
+<img width="2554" alt="Screen Shot 2023-03-09 at 19 43 20 pm" src="https://user-images.githubusercontent.com/113915529/223970023-f5a3369a-47d0-46ab-9c8f-d02a661bb7db.png">
+
+<img width="2553" alt="Screen Shot 2023-03-09 at 19 55 43 pm" src="https://user-images.githubusercontent.com/113915529/223970875-57c90d35-801e-42df-b3cf-de8e769ca8a2.png">
+
+
+<img width="2550" alt="Screen Shot 2023-03-09 at 19 46 20 pm" src="https://user-images.githubusercontent.com/113915529/223970624-eff1db05-3d28-43af-bed9-c6b4aff1cc66.png">
+
+
+
+
+<img width="2551" alt="Screen Shot 2023-03-09 at 19 46 30 pm" src="https://user-images.githubusercontent.com/113915529/223970261-b3c9da83-bc7c-40d4-b15b-259033c8b0fd.png">
+
+
+---
+
 ## **Usage**
 
 To use this site, you Log in or Create an accout to log in with, then create a ticket with content of an issue youre having and communicate with a support user to fix the related issue
