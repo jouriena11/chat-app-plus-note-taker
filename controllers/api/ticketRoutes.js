@@ -37,7 +37,6 @@ router.get("/:id", async (req, res) => {
 
 // POST request - create a new ticket
 // api/ticket/create-ticket
-// TODO: to auto-specify default support_user
 router.post("/create-ticket", async (req, res) => {
   // Auto-specify default support_user
   req.body.support_user_id = 1; // Or whichever default support user ID you want
@@ -46,6 +45,7 @@ router.post("/create-ticket", async (req, res) => {
     const ticketData = await Ticket.create(req.body);
     res.status(200).json(ticketData);
   } catch (err) {
+    // /console.error(err);
     res.status(500).json(err);
   }
 });
@@ -96,6 +96,7 @@ router.put("/update/:id", async (req, res) => {
 
 // DELETE request - delete a ticket by id
 // api/ticket/delete/${id}
+// TODO: Bug - still can't delete
 router.delete("/delete/:id", async (req, res) => {
   try {
     const delTicket = await Ticket.destroy({
